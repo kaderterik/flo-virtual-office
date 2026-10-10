@@ -261,3 +261,16 @@ a.creator-social:hover { color:#fff; background:#da4613; }
     #chatbot-dialog .chatbot-panel { height:min(560px,70dvh); }
     .guide-arrow { bottom:190px; }
 }
+.door-btn,.door-btn.completed,.door-btn.next-destination {
+    background:transparent;
+    border:0;
+    box-shadow:none;
+    outline:none;
+    animation:none;
+}
+.door-btn:hover,.door-btn.completed:hover,.door-btn:focus-visible,.door-btn:active {
+    background:rgba(255,245,224,.14);
+    border:0;
+    box-shadow:inset 0 0 16px rgba(255,230,190,.18);
+}
+.door-btn:focus-visible { outline:2px solid #f5bd80; outline-offset:2px; }
