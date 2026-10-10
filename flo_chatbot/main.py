@@ -248,6 +248,11 @@ def chat(request: ChatRequest):
         return {"answer": "Lütfen bir soru yaz."}
     soru_kucuk = re.sub(r"[\W_]+", " ", soru.lower()).strip()
 
+    # LinkedIn paylaşımı için kısa selam; bilgi tabanı bağlantısı gerektirmez.
+    linkedin_selam = soru_kucuk.replace("ı", "i")
+    if "linkedin" in linkedin_selam and "selam" in linkedin_selam:
+        return {"answer": "Selam kankalar"}
+
     # Nasılsın / hal hatır
     if soru_kucuk in [
         "nasılsın",
