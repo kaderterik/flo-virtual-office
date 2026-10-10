@@ -1,0 +1,102 @@
+.game-prop { display: block; width: 100%; height: 100%; overflow: visible; }
+.mg-card-prop { width: 44px; height: 44px; flex-shrink: 0; }
+.room-info-point { width: 64px; height: 64px; padding: 2px; border: 0; background: transparent; border-radius: 16px; box-shadow: none; filter: drop-shadow(0 5px 3px #21153065); transition: filter .18s, scale .18s; }
+.room-info-point.explored { border: 0; background: transparent; }
+.room-info-point:hover { scale: 1.13; filter: drop-shadow(0 0 8px #ffc76e); z-index: 2; }
+.room-info-point .game-prop { animation: prop-bob 3.5s ease-in-out infinite; animation-delay: var(--prop-delay,0s); }
+.prop-status { position: absolute; right: 0; top: 0; min-width: 19px; height: 19px; display: grid; place-items: center; padding: 2px; color: #fff6de; background: #a95830; border: 2px solid #fff0d0; border-radius: 50%; font: 800 10px Arial; }
+.room-info-point.explored .prop-status { background: #338364; }
+.prop-label { position: absolute; left: 50%; bottom: -24px; transform: translateX(-50%); width: max-content; max-width: 180px; padding: 5px 8px; border-radius: 6px; background: #302a3d; color: #fff4df; font-size: 11px; pointer-events: none; opacity: 0; }
+.room-info-point:hover .prop-label,.room-info-point:focus-visible .prop-label { opacity: 1; }
+.room-explore-menu button { display: flex; align-items: center; gap: 12px; }
+.room-explore-menu .game-prop { width: 42px; height: 42px; flex-shrink: 0; }
+#room-info-title { display: flex; align-items: center; gap: 10px; }
+#room-info-title .game-prop { width: 50px; height: 50px; flex-shrink: 0; }
+@keyframes prop-bob { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-4px) rotate(2deg); } }
+.sim-board { --sim-ink:#343546; --sim-paper:#fff5e0; }
+.sim-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 18px; margin: 20px 0; }
+.sim-card { position: relative; padding: 20px; border: 3px solid #454458; border-radius: 18px; background: #fff5e0; color: #343546; box-shadow: 0 6px 0 #323143,0 10px 22px #0003; overflow-wrap: anywhere; }
+.sim-card h3,.sim-card h4 { line-height: 1.35; margin: 10px 0; }
+.sim-card p { font-size: 14px; line-height: 1.65; margin: 10px 0; }
+.sim-prop { display: block; width: 88px; height: 88px; margin: 0 auto 10px; }
+.sim-card small { display: block; line-height: 1.6; margin: 8px 0; }
+.sim-card > button { margin-top: 10px; }
+.sim-stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 15px 0; }
+.sim-stat { flex: 1; min-width: 90px; padding: 12px 16px; border-radius: 10px; background: #6a91a9; color: #fff; border: 2px solid #343546; box-shadow: 0 3px 0 #343546; }
+.sim-stat small,.sim-stat strong { display: block; }
+.sim-stat small { font-size: 11px; margin-bottom: 6px; }
+.sim-stat strong { font-size: 20px; }
+.sim-board button { border-radius: 10px; border: 2px solid #454458; background: #e5eee8; color: #343546; box-shadow: 0 4px 0 #454458; font-weight: 700; line-height: 1.4; }
+.sim-board .sim-selected { background: #ffcb7e; border-color: #6a4638; outline: 3px solid #e99d52; outline-offset: 2px; }
+.sim-board .sim-done { background: #d8edda; }
+.sim-question-list { display: grid; gap: 10px; }
+.sim-question-list button { width: 100%; }
+.sim-rule { font-size: 13px; line-height: 1.7; color: #e8ddcc; margin: 18px 0; }
+.sim-stepper { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 16px 0; }
+.sim-stepper output { font-weight: 800; }
+.sim-stepper button { font-size: 20px; width: 44px; height: 44px; padding: 4px; text-align: center; }
+.sim-shelf { display: flex; flex-wrap: wrap; gap: 4px; padding: 10px; background: #dfd1bc; border-radius: 8px; }
+.sim-shelf i { display: block; width: 16px; height: 20px; border: 1px dashed #8c8072; border-radius: 3px; }
+.sim-shelf .sim-existing { background: #71929d; border-style: solid; }
+.sim-shelf .sim-added { background: #efa15f; border-style: solid; }
+.sim-card label { display: block; margin: 14px 0; font-size: 13px; font-weight: 700; }
+.sim-card input,.sim-card select { display: block; width: 100%; min-height: 44px; margin-top: 7px; padding: 10px; border: 2px solid #69627c; border-radius: 8px; color: #343546; background: #fff; font: inherit; font-size: 16px; }
+.sim-evidence { padding: 12px; background: #e6e2ef; border-left: 4px solid #9a8dc0; border-radius: 8px; }
+.sim-order-queue { display: flex; flex-wrap: wrap; gap: 10px; }
+.sim-order-queue button { flex: 1; min-width: 150px; }
+.sim-selected-order { display: flex; gap: 20px; align-items: center; margin: 20px 0; padding: 20px; background: #47495e; border: 2px solid #9790af; border-radius: 16px; }
+.sim-selected-order .sim-prop { margin: 0; flex-shrink: 0; }
+.sim-selected-order p { margin-top: 10px; }
+.sim-storefront { padding: 20px; background: #a6c6c2; border: 4px solid #4c6076; border-radius: 20px; color: #343546; }
+.sim-shop-sign { text-align: center; letter-spacing: 3px; font-weight: 800; padding: 15px; background: #fff5e0; border: 3px solid #454458; border-radius: 10px; box-shadow: 0 4px 0 #454458; }
+.sim-display-slots { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin: 20px 0; }
+.sim-display { min-height: 100px; text-align: center !important; }
+.sim-product-grid .sim-card { border-top: 8px solid var(--product-accent); }
+.sim-workshop { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 12px; padding: 24px; background: #83998c; border: 4px solid #46554f; border-radius: 20px; }
+.sim-station { display: flex; flex-direction: column; align-items: center; padding: 12px !important; text-align: center !important; }
+.sim-station .game-prop { width: 86px; height: 86px; max-width: 100%; }
+.sim-station strong { font-size: 13px; margin-top: 8px; }
+.sim-station small { font-size: 10px; margin-top: 7px; }
+.sim-observation { margin-top: 20px; }
+.sim-choice-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0 20px; }
+.sim-pipeline { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; align-items: start; margin: 20px 0; }
+.sim-lane { min-height: 220px; padding: 12px; border-radius: 16px; background: #535065; border: 2px solid #827b9a; }
+.sim-lane > h3 { font-size: 14px; margin-bottom: 18px; }
+.sim-lane .sim-card { padding: 12px; margin: 12px 0; }
+.sim-lane .sim-prop { width: 56px; height: 56px; }
+.sim-lane .sim-card h4 { font-size: 14px; }
+.sim-cargo-yard { display: flex; flex-wrap: wrap; gap: 14px; padding: 20px; background: #6b7a8b; border: 3px solid #424458; border-radius: 16px; }
+.sim-cargo { flex: 1; min-width: 150px; display: flex; flex-direction: column; align-items: center; text-align: center !important; }
+.sim-cargo .game-prop { width: 80px; height: 80px; }
+.sim-cargo small { margin-top: 8px; }
+.sim-manifest p { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.sim-manifest button { padding: 7px !important; font-size: 11px !important; }
+.sim-log { margin: 25px 0; padding: 15px; border: 1px solid #777086; border-radius: 10px; }
+.sim-log summary { cursor: pointer; font-size: 13px; }
+.sim-log p { font-size: 13px; line-height: 1.65; margin: 10px 0; }
+.sim-result-report { padding: 18px; margin: 20px 0; background: #474254; border-radius: 12px; }
+.sim-result-report p { font-size: 14px; line-height: 1.7; margin: 8px 0; }
+@media(max-width:900px) { .sim-pipeline { grid-template-columns: repeat(2,minmax(0,1fr)); } .sim-workshop { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+@media(max-width:700px) {
+    .room-info-point { width: 48px; height: 48px; }
+    .sim-grid { grid-template-columns: minmax(0,1fr); }
+    .sim-card { padding: 16px; }
+    .sim-display-slots { grid-template-columns: minmax(0,1fr); }
+    .sim-display { min-height: 65px; }
+    .sim-pipeline { grid-template-columns: minmax(0,1fr); }
+    .sim-workshop { grid-template-columns: repeat(2,minmax(0,1fr)); padding: 12px; }
+    .sim-card input,.sim-card select { max-width: 100%; }
+    .sim-selected-order { gap: 12px; padding: 14px; }
+    .sim-selected-order .sim-prop { width: 55px; height: 55px; }
+}
+@media(prefers-reduced-motion:reduce) { .room-info-point .game-prop { animation: none; } .room-info-point { transition: none; } }
+.sim-sprint-guide { margin-bottom: 16px; padding: 16px; background: #fff1ce; color: #343546; border: 2px solid #343546; border-radius: 12px; }
+.sim-sprint-guide p { margin: 8px 0; }
+.sim-sprint-guide ol { padding-left: 24px; line-height: 1.7; }
+.sim-sprint-guide summary { cursor: pointer; font-weight: 700; }
+.mg-live-stats strong { min-width: 0; }
+.room-bg-img { image-rendering: pixelated; }
+.room-bg-img[src*="cozy"] { image-rendering: auto; }
+#room-info-text { max-height: 9.9em; overflow-y: auto; }
+#room-info-more[hidden] { display: none; }
+#room-info-more summary { cursor: pointer; margin-bottom: 12px; font-weight: 700; }

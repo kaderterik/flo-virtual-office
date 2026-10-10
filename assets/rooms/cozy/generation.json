@@ -1,0 +1,116 @@
+[
+  {
+    "id": 2,
+    "title": "ÜRÜN YÖNETİMİ",
+    "character": "adult man, tousled sandy-brown hair, light stubble, navy cardigan and orange shirt",
+    "props": "shoe sample trays, product collection sketches and simple product lifecycle diagram"
+  },
+  {
+    "id": 3,
+    "title": "KATEGORİ YÖNETİMİ",
+    "character": "adult woman, long straight black hair, rust blouse, oval glasses",
+    "props": "organized shoe category shelf, small category chart and collection swatches"
+  },
+  {
+    "id": 4,
+    "title": "MERCHANDISE PLANLAMA",
+    "character": "adult man, short dark hair, round spectacles, navy sweater over cream collar",
+    "props": "store allocation board, stacked shoe cartons, small sales planning chart"
+  },
+  {
+    "id": 5,
+    "title": "TEDARİK OPERASYONLARI",
+    "character": "adult man, short salt-and-pepper hair, clean shaven, pale blue shirt",
+    "props": "supplier workflow board, material samples, neat shipment files"
+  },
+  {
+    "id": 6,
+    "title": "PERAKENDE OPERASYONLARI",
+    "character": "adult man, short wavy brown hair, green overshirt, friendly freckles",
+    "props": "inventory ledger, handheld stock scanner, store layout board"
+  },
+  {
+    "id": 7,
+    "title": "TASARIM MERKEZİ",
+    "character": "adult man, curly dark hair, thin moustache, ochre vest over dark shirt",
+    "props": "shoe sketches, fabric swatches, pencil stand and footwear prototype"
+  },
+  {
+    "id": 8,
+    "title": "PERAKENDE SATIŞ",
+    "character": "adult woman, shoulder length honey-blonde hair, square glasses, charcoal jacket and teal blouse",
+    "props": "store photos as simple drawings, sales chart, small shoe display"
+  },
+  {
+    "id": 9,
+    "title": "E-TİCARET",
+    "character": "adult man, short auburn hair, clean shaven, indigo casual shirt",
+    "props": "side monitor with minimal storefront blocks, packing envelope, online product shelf"
+  },
+  {
+    "id": 10,
+    "title": "ULUSLARARASI OPERASYONLAR",
+    "character": "adult man, neat brown hair swept back, small goatee, tan jacket and cream shirt",
+    "props": "globe, world map without text, travel folder and regional shoe display"
+  },
+  {
+    "id": 11,
+    "title": "MARKA PAZARLAMA",
+    "character": "adult woman, dark curly bob, coral cardigan, small hoop earrings",
+    "props": "colorful campaign moodboard, brand palette cards and creative brief"
+  },
+  {
+    "id": 12,
+    "title": "YALIN DÖNÜŞÜM",
+    "character": "adult woman, auburn shoulder length wavy hair, sage blazer and cream shirt",
+    "props": "simple sticky-note process board, improvement checklist and tidy workflow shelf"
+  },
+  {
+    "id": 13,
+    "title": "FLO TEKNOLOJİ",
+    "character": "adult man, short curly black hair, rectangular glasses, denim blue overshirt",
+    "props": "two small side monitors with schematic code blocks, task board and keyboard"
+  },
+  {
+    "id": 14,
+    "title": "FLO YAPAY ZEKÂ",
+    "character": "adult woman, black hair in low bun, teal cardigan, warm brown skin",
+    "props": "small robot figurine, data diagram with nodes, modest server cabinet"
+  },
+  {
+    "id": 15,
+    "title": "CRM VE BÜYÜME",
+    "character": "adult man, fluffy dark brown hair, deep green jacket, cream tee",
+    "props": "customer journey cards, small customer segmentation chart and telephone"
+  },
+  {
+    "id": 16,
+    "title": "STRATEJİ VE İŞ GELİŞTİRME",
+    "character": "adult woman, dark hair in side braid, navy blazer and mustard top",
+    "props": "strategy roadmap diagram, globe and project planning folder"
+  },
+  {
+    "id": 17,
+    "title": "KURUMSAL İLETİŞİM",
+    "character": "adult man, dark hair with gray temples, soft beard, olive blazer",
+    "props": "communications noticeboard, desktop microphone, sustainability plant and press folder"
+  },
+  {
+    "id": 18,
+    "title": "MİMARİ VE KONSEPT",
+    "character": "adult woman, chestnut pixie haircut, amber glasses, dark teal shirt",
+    "props": "rolled blueprints, small shop model, architect ruler and hard hat on shelf"
+  },
+  {
+    "id": 19,
+    "title": "MALİ İŞLER VE FİNANS",
+    "character": "adult man, short graying hair, moustache, charcoal blazer and cream shirt",
+    "props": "budget ledger, calculator, simple finance chart and small safe cabinet"
+  },
+  {
+    "id": 20,
+    "title": "LOJİSTİK DİREKTÖRLÜĞÜ",
+    "character": "adult man, short cropped black hair, clean shaven, white shirt and rolled sleeves",
+    "props": "shipment cartons, miniature delivery truck, simple route map and shipping clipboard"
+  }
+]

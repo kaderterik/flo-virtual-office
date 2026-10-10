@@ -1,0 +1,49 @@
+.journey-actions { display: grid; gap: 8px; }
+.journey-actions button, .journey-mobile-actions button { font: inherit; font-size: 12px; font-weight: 700; min-height: 42px; padding: 10px; text-align: left; background: #fff; color: #1a1a1a; border: 2px solid #1a1a1a; border-radius: 6px; box-shadow: 2px 2px 0 #ff5a1f; cursor: pointer; }
+.journey-actions button:hover, .journey-mobile-actions button:hover { background: #ff5a1f; }
+[data-journey][hidden] { display: none; }
+.journey-mobile-actions { display: none; }
+#journey-dialog { --game-ink: #1a1a1a; --game-shadow: 4px 4px 0 #ff5a1f; width: min(1200px, 94vw); height: 90vh; max-height: 90dvh; margin: auto; border: 3px solid #ff5a1f; border-radius: 10px; color: white; background: #1a1a1a radial-gradient(#ffffff12 1px, transparent 1px); background-size: 18px 18px; overflow: auto; }
+#journey-dialog::backdrop { background: #000b; }
+.journey-shell { padding: 25px 32px 40px; }
+.journey-header { display: flex; justify-content: space-between; align-items: center; gap: 20px; border-bottom: 3px solid #ff5a1f; padding-bottom: 18px; margin-bottom: 25px; }
+.journey-header h2 { font-size: clamp(22px, 3vw, 32px); }
+.journey-header button { flex-shrink: 0; }
+.journey-ending { display: grid; grid-template-columns: minmax(160px, .6fr) minmax(0, 1.5fr); border: 3px solid #111; border-radius: 8px; box-shadow: 5px 5px 0 #ff5a1f; background: white; color: #1a1a1a; overflow: hidden; }
+.journey-ending > div { background: #ff5a1f; display: grid; place-items: center; padding: 20px; }
+.journey-ending .mg-fillo { width: 100%; max-width: 240px; height: auto; }
+.journey-ending section { padding: 28px; }
+.journey-ending h3 { font-size: clamp(21px, 2.3vw, 29px); line-height: 1.2; margin-bottom: 18px; }
+.journey-ending p { line-height: 1.6; margin-bottom: 12px; }
+.journey-ending .mg-eyebrow { color: #9e340f; }
+.journey-tie { font-size: 13px; border-left: 4px solid #ff5a1f; padding-left: 12px; }
+.journey-percent { font-size: 25px !important; font-weight: 800; }
+.journey-caption { font-size: 13px; color: #ddd; margin-top: 24px; }
+.journey-certificate { display: block; width: 100%; height: auto; margin: 24px 0; border: 2px solid white; }
+.journey-download { display: inline-block; padding: 14px 20px; color: #1a1a1a; background: #ff5a1f; border: 2px solid #111; border-bottom: 5px solid #982e08; border-radius: 6px; text-decoration: none; font-weight: 800; }
+.journey-notes { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.journey-notes .journey-unvisited { background: #d7d7d7; box-shadow: 3px 3px 0 #777; }
+.journey-notes details { border-top: 1px solid #ccc; padding-top: 10px; margin-top: 10px; }
+.journey-notes summary { cursor: pointer; font-size: 14px; font-weight: 700; line-height: 1.4; }
+.journey-note-badge { font-weight: 800; color: #07632f; }
+.journey-actions button:focus-visible, .journey-mobile-actions button:focus-visible, .journey-download:focus-visible, .journey-notes summary:focus-visible { outline: 3px solid #ff5a1f; outline-offset: 3px; }
+.next-destination { animation: next-door-pulse 2s ease-in-out infinite; }
+.door-btn.next-destination { border: 2px solid #ff8a4c; }
+.guide-arrow { left: 50%; top: auto; bottom: 15px; transform: translateX(-50%); animation: none; max-width: 80%; width: max-content; font-size: clamp(9px, 1vw, 12px); border-radius: 6px; box-shadow: 3px 3px 0 #1a1a1a; }
+.lounge-btn { background: #ff5a1f; color: #1a1a1a; border-radius: 6px; }
+@keyframes next-door-pulse { 0%, 35%, 100% { box-shadow: 0 0 0 0 transparent; } 15% { box-shadow: 0 0 16px 5px #ff7b38aa; } }
+@media (max-width: 800px) {
+    .journey-mobile-actions { display: flex; position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); gap: 6px; z-index: 450; width: max-content; max-width: 95vw; }
+    body:has(#department-screen.active) .journey-mobile-actions { display: none; }
+    .journey-mobile-actions button { text-align: center; font-size: 11px; padding: 9px; }
+    .journey-shell { padding: 20px 15px 30px; }
+    .journey-ending { grid-template-columns: 1fr; }
+    .journey-ending > div { padding: 12px; }
+    .journey-ending .mg-fillo { width: 120px; }
+    .journey-ending section { padding: 20px; }
+    .journey-notes { grid-template-columns: minmax(0, 1fr); }
+    .journey-header { gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .next-destination { animation: none; outline: 2px solid #ff8a4c; }
+}

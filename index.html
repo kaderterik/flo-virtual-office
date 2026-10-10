@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fillo'nun Yolculuğu - FLO Ofis Keşfi</title>
+    <link rel="shortcut icon" href="favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="128x128" href="assets/fillo-favicon.png?v=2">
+    <link rel="icon" type="image/svg+xml" href="assets/fillo-favicon.svg?v=2">
+    <meta name="description" content="FLO Perakende Sistemini interaktif ve eğlenceli şekilde keşfet! Fillo ile departmanları dola, görevleri tamamla, rozetler kazan.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/games.css">
+    <link rel="stylesheet" href="css/game-theme.css">
+    <link rel="stylesheet" href="css/missions.css">
+    <link rel="stylesheet" href="css/simulations.css">
+    <link rel="stylesheet" href="css/journey.css">
+    <link rel="stylesheet" href="css/cozy-theme.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button id="sound-toggle" class="sound-toggle" type="button" aria-label="Sesleri kapat" aria-pressed="false" title="Sesleri kapat">🔊</button>
+
+    <!-- ANA KORİDOR EKRANI -->
+    <div id="corridor-screen" class="app-layout screen active">
+
+        <!-- SOL SİDEBAR (%18) -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span class="flo-logo-text">FLO</span>
+                <span class="sidebar-subtitle">Staj 2026</span>
+            </div>
+
+            <!-- Projeyi hazırlayan -->
+            <div class="stajyer-section">
+                <h3 class="sidebar-section-title">Projeyi Hazırlayan</h3>
+                <div class="stajyer-list">
+                    <div class="stajyer-card active-card">
+                        <div class="stajyer-avatar" style="background:#FF5A1F">K</div>
+                        <div class="stajyer-info">
+                            <span class="stajyer-name">Kader Terik</span>
+                            <span class="stajyer-dept">FLO GEN Dijital Staj Projesi</span>
+                        </div>
+                        <div class="creator-socials" aria-label="Kader Terik sosyal profilleri">
+                            <a class="creator-social" data-social="mail" href="mailto:kaderterik3@gmail.com" aria-label="Kader Terik'e e-posta gönder" title="kaderterik3@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg></a>
+                            <a class="creator-social" data-social="linkedin" href="https://www.linkedin.com/in/kaderterik" target="_blank" rel="noopener noreferrer" aria-label="Kader Terik LinkedIn profili (yeni sekme)" title="LinkedIn">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96C2 21.32 2.69 22 3.55 22h16.9c.86 0 1.55-.68 1.55-1.52V3.52C22 2.68 21.31 2 20.45 2ZM7.93 18.75H4.98V9.2h2.95v9.55ZM6.46 7.9a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42Zm12.29 10.85H15.8v-4.64c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.72H9.51V9.2h2.83v1.3h.04c.39-.74 1.36-1.52 2.79-1.52 2.99 0 3.58 1.97 3.58 4.53v5.24Z"/></svg>
+                            </a>
+                            <a class="creator-social" data-social="github" href="https://github.com/kaderterik/" target="_blank" rel="noopener noreferrer" aria-label="Kader Terik GitHub profili (yeni sekme)" title="GitHub">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .8A11.2 11.2 0 0 0 8.46 22.62c.56.1.77-.24.77-.54v-2.09c-3.13.68-3.79-1.33-3.79-1.33-.51-1.29-1.25-1.63-1.25-1.63-1.02-.7.08-.68.08-.68 1.13.08 1.73 1.16 1.73 1.16 1 .1.71 2.25 3.27 1.6.1-.73.39-1.23.71-1.51-2.5-.28-5.13-1.25-5.13-5.57 0-1.23.44-2.23 1.16-3.02-.12-.29-.5-1.43.11-2.98 0 0 .95-.3 3.08 1.15A10.7 10.7 0 0 1 12 6.8c.95 0 1.9.13 2.8.38 2.14-1.45 3.08-1.15 3.08-1.15.61 1.55.23 2.69.11 2.98.72.79 1.16 1.79 1.16 3.02 0 4.34-2.64 5.29-5.15 5.57.4.35.76 1.03.76 2.08v2.4c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rozet Sayacı -->
+            <div class="progress-panel">
+                <h3 class="sidebar-section-title">İlerleme</h3>
+                <div class="progress-bar-wrap">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-label"><span id="badge-count">0</span> / <span id="badge-total">19</span> Rozet</span>
+                </div>
+            </div>
+
+            <nav class="journey-actions" aria-label="Yolculuğum">
+                <button type="button" data-journey="recommendation" hidden>🐘 Fillo'nun Önerisi</button>
+                <button type="button" data-journey="certificate">🏆 Sertifikamı Gör</button>
+                <button type="button" data-journey="notes">📓 Staj Defterim</button>
+            </nav>
+            <section class="chatbot-panel" aria-label="FLO bilgi asistanı">
+                <button id="chatbot-toggle" class="chatbot-toggle" type="button" aria-expanded="true">
+                    <span class="chatbot-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M7 5h17a3 3 0 0 1 3 3v17H8a3 3 0 0 1-3-3V8a3 3 0 0 1 2-3Z" fill="#fff1d8" stroke="currentColor" stroke-width="2"/><path d="M10 5v20M14 11h8M14 16h8M14 21h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                    <span><strong>FLO Asistan</strong><small>Departmanları bana sor</small></span>
+                </button>
+                <div id="chatbot-body" class="chatbot-body">
+                    <div id="chatbot-messages" class="chatbot-messages" aria-live="polite">
+                        <div class="chat-message bot">Merhaba canım! FLO departmanları ve staj programı hakkında soru sorabilirsin.</div>
+                    </div>
+                    <form id="chatbot-form" class="chatbot-form">
+                        <input id="chatbot-input" type="text" maxlength="500" aria-label="FLO Asistana sorunu yaz" placeholder="Örn. İşe alım nasıl ilerliyor?" autocomplete="off" required>
+                        <button id="chatbot-send" type="submit" aria-label="Gönder">➤</button>
+                    </form>
+                    <p id="chatbot-status" class="chatbot-status" role="status"></p>
+                    <button id="chatbot-retry" type="button" hidden>Tekrar Dene</button>
+                </div>
+            </section>
+            <div id="sidebar-fillo" class="sidebar-fillo" role="img" aria-label="Fillo oturuyor ve pembe bir kalp tutuyor"></div>
+        </aside>
+
+        <!-- SAĞ ANA ALAN: KORİDOR (%82) -->
+        <main class="corridor-main">
+            <div class="scene-viewport">
+                <div class="corridor-wrapper">
+                    <img id="corridor-img" src="assets/kat1-cozy.webp" alt="FLO Ofis Koridoru" class="corridor-img" />
+                    <div class="vignette-overlay"></div>
+                    <div id="doors-container" class="doors-layer"></div>
+
+                    <!-- Merdiven / Kat Değiştirme Hotspot -->
+                    <button id="floor-btn" class="floor-btn" type="button" title="Kat Değiştir"></button>
+                    <button id="lounge-btn" class="lounge-btn" type="button" style="display:none"></button>
+
+                    <!-- Kompakt Başlık Kartı -->
+                    <header class="header-card">
+                        <div class="header-content">
+                            <h1>Departman Koridoru</h1>
+                            <p>Bir kapıya tıkla, departmanı keşfet!</p>
+                        </div>
+                        <span id="floor-label" class="floor-pill">🏠 Giriş Katı</span>
+                    </header>
+
+                    <!-- Kat geçiş karartma overlay'i (z-index: 999 tüm katmanı örter) -->
+                    <div id="transition-overlay" class="transition-overlay"></div>
+
+                    <!-- İlk Kapıya Yönlendirme İpucu (Guide Arrow) -->
+                    <div id="guide-arrow" class="guide-arrow">
+                        <span class="guide-icon">👈</span>
+                        <span class="guide-text">İlk departmanı keşfetmek için kapıya tıkla!</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="mobile-department-picker"><label for="mobile-department">Bir departman keşfet</label><select id="mobile-department"><option value="">Oda seç →</option></select></div>
+    <nav class="journey-mobile-actions" aria-label="Mobil yolculuk menüsü">
+        <button id="chatbot-mobile-open" type="button" aria-haspopup="dialog">💬 Asistan</button>
+        <button type="button" data-journey="recommendation" hidden>🐘 Önerim</button>
+        <button type="button" data-journey="certificate">🏆 Sertifikam</button>
+        <button type="button" data-journey="notes">📓 Defterim</button>
+    </nav>
+    <dialog id="chatbot-dialog" aria-labelledby="chatbot-dialog-title">
+        <header><h2 id="chatbot-dialog-title">FLO Asistan</h2><button id="chatbot-mobile-close" type="button" aria-label="Asistanı kapat">✕</button></header>
+        <div id="chatbot-mobile-slot"></div>
+    </dialog>
+    <dialog id="journey-dialog" aria-labelledby="journey-title">
+        <div class="mg-shell journey-shell"><header class="journey-header"><h2 id="journey-title"></h2><button id="journey-close" type="button" aria-label="Yolculuk özetini kapat">✕</button></header>
+            <div id="journey-content"></div>
+        </div>
+    </dialog>
+
+    <!-- DEPARTMAN ODASI EKRANI (Oyun Atmosferinde Görsel Üzeri Konuşma Düzeni) -->
+    <main id="department-screen" class="screen">
+        <!-- Floating Ana Oyun Sahnesi Konteyneri (%85-90 Boyutunda) -->
+        <div class="room-game-viewport">
+            <!-- Çarpı (Close) Butonu -->
+            <button id="btn-close-room" class="btn-close-modal" type="button" title="Kapat (✕)">✕</button>
+
+            <!-- Görünüm 1: Büyük Oyun Sahnesi & Görsel Üzeri Konuşma Baloncuğu -->
+            <div id="room-dialogue-view" class="room-game-scene">
+                <!-- ODA GÖRSELİ VE ETKİLEŞİMLİ NESNELER SAHNESİ -->
+                <div class="room-stage">
+                    <img id="room-bg-img" src="assets/rooms/cozy/oda1.webp" alt="Departman Odası" class="room-bg-img" />
+                    <div id="room-img-fallback" class="room-img-fallback" style="display:none">
+                        <span class="fallback-icon">🏢</span>
+                        <span id="fallback-dept-name">İnsan Kaynakları Odası</span>
+                    </div>
+
+                    <!-- Canlı Oda Işık Efekti (Ambient Lighting) -->
+                    <div class="room-ambient-glow"></div>
+                    <div id="room-hotspots" class="room-hotspots" aria-label="Odanın bilgi noktaları"></div>
+                    <div id="room-art-frame" class="room-art-frame" aria-hidden="true"></div>
+                </div>
+                <button id="room-explore-toggle" class="room-explore-toggle" type="button" aria-controls="room-explore-menu" aria-expanded="false" hidden>🔎 Keşfet</button>
+                <nav id="room-explore-menu" class="room-explore-menu" aria-label="Keşif noktaları" hidden></nav>
+                <section id="room-info-panel" class="room-info-panel" aria-labelledby="room-info-title" hidden>
+                    <button id="room-info-close" type="button" aria-label="Bilgi kartını kapat">✕</button>
+                    <h3 id="room-info-title"></h3><p id="room-info-text"></p>
+                    <details id="room-info-more" hidden><summary>Ayrıntıyı oku</summary><p id="room-info-full"></p></details>
+                    <button id="room-info-task" type="button">🎮 Göreve Geç →</button>
+                </section>
+
+                <!-- GÖRSELİN SAĞ ALT ALANINDA YARI SAYDAM FLO KONUŞMA BALONCUĞU -->
+                <div id="speech-bubble" class="speech-bubble-overlay">
+                    <div class="bubble-header">
+                        <span id="character-badge" class="character-badge">👩‍💼 İK Uzmanı</span>
+                        <span id="dialogue-step-tag" class="step-tag">1 / 4</span>
+                    </div>
+                    <h3 id="bubble-title" class="bubble-title">Tanışma</h3>
+                    <p id="bubble-text" class="bubble-text"></p>
+                    <div class="bubble-actions">
+                        <button id="btn-prev-dialogue" class="btn-bubble-prev hidden" type="button">← Geri</button>
+                        <button id="btn-next-dialogue" class="btn-bubble-next" type="button">İleri →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Görünüm 2: Butona Tıklanınca Açılan Görev/Oyun Sayfası -->
+            <div id="room-game-view" class="room-game-view hidden">
+                <div class="game-toolbar"><button id="btn-back-to-dialogue" type="button">← Sohbete Dön</button><span id="game-title"></span></div>
+                <div id="mini-game-root"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/corridor.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/games-data.js"></script>
+    <script src="js/simulation-data.js"></script>
+    <script src="js/room-content.js"></script>
+    <script src="js/mission-data.js"></script>
+    <script src="js/journey-data.js"></script>
+    <script src="js/prop-art.js"></script>
+    <script src="js/game-art.js"></script>
+    <script src="js/game-feedback.js"></script>
+    <script src="js/simulation-games.js"></script>
+    <script src="js/games.js"></script>
+    <script src="js/room-explore.js"></script>
+    <script src="js/certificate-art.js"></script>
+    <script src="js/journey.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+groq
+qdrant-client
+sentence-transformers
+python-docx

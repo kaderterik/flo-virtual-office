@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+flo_chatbot/data/
+tmp/
+v0_extracted/
+DOSYA-INCELEME.md
+assets/**/*.png
+!assets/fillo-favicon.png
+assets/kat1.webp
+assets/kat2.webp
+assets/rooms/concepts/
+assets/rooms/pixel/
+assets/rooms/cozy/generation.json

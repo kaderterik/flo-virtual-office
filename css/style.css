@@ -1,0 +1,905 @@
+/* =========================================
+   FLO Renk Paleti & Değişkenler
+========================================= */
+:root {
+    --color-orange: #FF5A1F;
+    --color-dark: #241C15;
+    --color-cream: #FFF6EC;
+    --color-peach: #FFD9BB;
+    --color-pink: #FF8FAE;
+    --color-white: #FFFFFF;
+    --color-green: #28a745;
+    --sidebar-width: 22%;
+    --font-main: 'Outfit', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-dark);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Ekran Yönetimi */
+.hidden {
+    display: none !important;
+}
+.screen {
+    display: none;
+}
+.screen.active {
+    display: flex;
+}
+
+/* =========================================
+   ANA LAYOUT: Sidebar + Koridor
+========================================= */
+.app-layout {
+    height: 100vh;
+    width: 100vw;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+/* =========================================
+   SOL SİDEBAR (%18)
+========================================= */
+.sidebar {
+    width: var(--sidebar-width);
+    min-width: 180px;
+    max-width: 240px;
+    height: 100vh;
+    background: linear-gradient(180deg, #2e2016 0%, #1a1209 100%);
+    border-right: 2px solid rgba(255, 90, 31, 0.3);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0.8rem;
+    gap: 0.8rem;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+/* Logo */
+.sidebar-logo {
+    text-align: center;
+    padding: 0.6rem 0.5rem 0.8rem;
+    border-bottom: 1px solid rgba(255, 90, 31, 0.25);
+    flex-shrink: 0;
+}
+.flo-logo-text {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-orange);
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px rgba(255, 90, 31, 0.5);
+}
+.sidebar-subtitle {
+    font-size: 0.7rem;
+    color: rgba(255, 246, 236, 0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0.1rem;
+    display: block;
+}
+
+/* Bölüm Başlıkları */
+.sidebar-section-title {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--color-orange);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    opacity: 0.85;
+}
+
+/* Stajyer Bölümü */
+.stajyer-section {
+    flex-shrink: 0;
+}
+
+.stajyer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.stajyer-card {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.6rem;
+    background: rgba(255, 246, 236, 0.05);
+    border: 1px solid rgba(255, 246, 236, 0.08);
+    border-radius: 10px;
+    cursor: default;
+    transition: background 0.2s;
+}
+.stajyer-card.active-card {
+    background: rgba(255, 90, 31, 0.12);
+    border-color: rgba(255, 90, 31, 0.35);
+}
+.stajyer-card:hover {
+    background: rgba(255, 246, 236, 0.08);
+}
+
+.stajyer-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--color-white);
+    flex-shrink: 0;
+    border: 1.5px solid rgba(255,255,255,0.2);
+}
+
+.stajyer-info {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+.stajyer-name {
+    display: block;
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: var(--color-cream);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.stajyer-dept {
+    display: block;
+    font-size: 0.65rem;
+    color: rgba(255, 246, 236, 0.45);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.stajyer-badge {
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+/* İlerleme Paneli */
+.progress-panel {
+    flex-shrink: 0;
+}
+
+.progress-bar-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 246, 236, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-orange), var(--color-pink));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.progress-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: rgba(255, 246, 236, 0.6);
+    text-align: right;
+}
+
+/* FLO bilgi asistanı */
+.chatbot-panel {
+    flex: 1;
+    min-height: 250px;
+    border: 1px solid rgba(255, 90, 31, 0.45);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.chatbot-toggle {
+    width: 100%; padding: 0.75rem; border: 0; color: #fff6ec; background: transparent; cursor: pointer;
+    display: flex;
+    align-items: center; gap: 0.65rem; text-align: left;
+}
+.chatbot-icon { font-size: 1.4rem; }
+.chatbot-toggle strong, .chatbot-toggle small { display: block; }
+.chatbot-toggle strong { font-size: 0.8rem; }
+.chatbot-toggle small { color: rgba(255,246,236,.58); font-size: .63rem; margin-top: .1rem; }
+.chatbot-body { padding: 0 .65rem .65rem; min-height: 0; flex: 1; display: flex; flex-direction: column; }
+.chatbot-messages { min-height: 100px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: .45rem; padding: .3rem 0 .6rem; }
+.chat-message { padding: .55rem .65rem; border-radius: 10px; font-size: .7rem; line-height: 1.4; }
+.chat-message.bot { background: rgba(255,255,255,.1); color: #fff6ec; align-self: flex-start; }
+.chat-message.user { background: var(--color-orange); color: #fff; align-self: flex-end; }
+.chatbot-form { display: flex; gap: .35rem; }
+.chatbot-form input { min-width: 0; flex: 1; border: 1px solid rgba(255,255,255,.18); border-radius: 8px; padding: .55rem; background: rgba(0,0,0,.22); color: #fff; font-size: .68rem; }
+.chatbot-form button { width: 34px; border: 0; border-radius: 8px; background: var(--color-orange); color: #fff; cursor: pointer; }
+.chatbot-form button:disabled { opacity: .55; cursor: wait; }
+.chatbot-status { min-height: .8rem; margin: .35rem 0 0; color: rgba(255,246,236,.55); font-size: .58rem; }
+#chatbot-retry { align-self: flex-start; padding: 8px 12px; border-radius: 6px; border: 1px solid #ff5a1f; background: #fff5e9; color: #1a1a1a; font: inherit; cursor: pointer; }
+#chatbot-retry[hidden] { display: none; }
+#chatbot-dialog { width: min(480px, 94vw); max-height: 85dvh; margin: auto; padding: 16px; border: 2px solid #ff5a1f; border-radius: 14px; background: #1a1a1a; color: white; }
+#chatbot-dialog::backdrop { background: #000b; }
+#chatbot-dialog > header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+#chatbot-dialog h2 { font-size: 20px; }
+#chatbot-mobile-close { width: 44px; height: 44px; cursor: pointer; border: 0; border-radius: 8px; background: #fff5e9; }
+#chatbot-dialog .chatbot-panel { height: min(520px, 65dvh); min-height: 0; margin-top: 12px; }
+#chatbot-dialog .chatbot-toggle { display: none; }
+#chatbot-dialog .chat-message, #chatbot-dialog .chatbot-form input { font-size: 16px; }
+#chatbot-dialog .chatbot-status { font-size: 12px; }
+
+/* =========================================
+   SAĞ ANA ALAN: KORİDOR (%82)
+========================================= */
+.corridor-main {
+    flex: 1;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scene-viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.corridor-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), filter 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Kat Geçiş Animasyonu — Yukarı Çıkış / Aşağı İniş Efekti */
+.corridor-wrapper.floor-transition-up {
+    transform: translateY(-40px) scale(1.05);
+    filter: blur(5px) brightness(1.2);
+}
+
+.corridor-wrapper.floor-transition-down {
+    transform: translateY(40px) scale(0.95);
+    filter: blur(5px) brightness(0.75);
+}
+
+.corridor-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;   /* Tamamen kaplar, kenarlarda HİÇBİR BOŞLUK KALMAZ */
+    display: block;
+}
+
+.vignette-overlay {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(36, 28, 21, 0.4) 100%);
+    z-index: 2;
+}
+.screen {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.screen.active {
+    display: flex;
+    opacity: 1;
+}
+
+#department-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background-color: rgba(14, 9, 5, 0.88);
+    backdrop-filter: blur(14px);
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    pointer-events: none !important;
+    opacity: 0;
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#department-screen.active {
+    display: flex !important;
+    pointer-events: auto !important;
+    opacity: 1;
+}
+
+/* Kat Geçiş Karartma Overlay (Süzülen Yumuşak Geçiş) */
+.transition-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(36, 28, 21, 0.5), #1A0F08 90%);
+    opacity: 0;
+    pointer-events: none !important;
+    display: none;
+    z-index: 999;
+    transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.transition-overlay.active {
+    display: block;
+    opacity: 1;
+    pointer-events: auto !important;
+}
+
+.corridor-wrapper {
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), filter 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.corridor-wrapper.floor-transitioning {
+    transform: scale(0.97) translateY(12px);
+    filter: blur(8px) brightness(0.65);
+}
+
+/* Kompakt Başlık Kartı — Corridor-Wrapper İçinde Sol Üst Köşede */
+.header-card {
+    position: absolute;
+    top: 0.8rem;
+    left: 0.8rem;
+    right: auto;
+    transform: none;
+    z-index: 200;
+    background-color: rgba(255, 246, 236, 0.92);
+    border: 1.5px solid rgba(36, 28, 21, 0.18);
+    padding: 0.35rem 0.85rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25), 0 2px 0 #241C15;
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    white-space: nowrap;
+    pointer-events: none;
+}
+.header-content h1 {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin: 0;
+    line-height: 1.2;
+}
+.header-content p {
+    font-size: 0.65rem;
+    color: rgba(36, 28, 21, 0.65);
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* =========================================
+   KAPILARIN KATMANI
+========================================= */
+.doors-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+}
+
+/* Kapı butonları — hafif görünür kesikli turuncu çizgi ile belirginleştirildi */
+.door-btn {
+    pointer-events: auto !important;
+    position: absolute;
+    background: rgba(255, 90, 31, 0.05);
+    border: 1.5px dashed rgba(255, 90, 31, 0.4);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    color: transparent;
+    font-size: 0;
+    z-index: 100;
+}
+.door-btn:hover {
+    border-style: solid;
+    border-color: rgba(255, 90, 31, 0.9);
+    background: rgba(255, 90, 31, 0.22);
+    box-shadow: 0 0 22px rgba(255, 90, 31, 0.6), inset 0 0 15px rgba(255, 90, 31, 0.2);
+}
+.door-btn.completed {
+    background: rgba(40, 167, 69, 0.05);
+    border: 1.5px dashed rgba(40, 167, 69, 0.5);
+}
+.door-btn.completed:hover {
+    border-style: solid;
+    border-color: rgba(40, 167, 69, 0.9);
+    background: rgba(40, 167, 69, 0.22);
+    box-shadow: 0 0 22px rgba(40, 167, 69, 0.6);
+}
+.door-badge { display: none; }
+
+/* Ortak Alan Butonu */
+.lounge-btn {
+    position: absolute;
+    left: 50%;
+    top: 63%;
+    transform: translateX(-50%);
+    z-index: 150;
+    background-color: var(--color-pink);
+    color: var(--color-dark);
+    border: 2.5px solid var(--color-dark);
+    padding: 0.45rem 1rem;
+    border-radius: 20px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.75rem;
+    cursor: pointer;
+    box-shadow: 0 3px 0 0 #241C15;
+    transition: filter 0.15s ease;
+    white-space: nowrap;
+}
+.lounge-btn:hover {
+    filter: brightness(1.12);
+}
+
+/* Üst Kat / Alt Kat — tam merdiven hitbox'ı */
+.floor-btn {
+    position: absolute;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 150;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.floor-btn:hover {
+    border-color: rgba(255, 220, 100, 0.7);
+    background: rgba(255, 220, 100, 0.12);
+    box-shadow: 0 0 25px rgba(255, 220, 100, 0.45);
+}
+
+/* Kat Etiketi (header'da) */
+.floor-pill {
+    background: rgba(255,90,31,0.18);
+    border: 1.5px solid rgba(255,90,31,0.4);
+    color: var(--color-orange);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    white-space: nowrap;
+    letter-spacing: 1px;
+}
+
+/* =========================================
+   İLK KAPI YÖNLENDİRME İPUCU (GUIDE ARROW)
+========================================= */
+.guide-arrow {
+    position: absolute;
+    left: 10.5%;
+    top: 25%;
+    z-index: 220;
+    background-color: var(--color-orange);
+    color: var(--color-cream);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 2px solid var(--color-dark);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(255, 90, 31, 0.5), 0 3px 0 #241C15;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: guideBounce 1.6s ease-in-out infinite;
+    pointer-events: none;
+}
+@keyframes guideBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.04); }
+}
+
+/* =========================================
+   DEPARTMAN ODASI (OYUN ATMOSFERİNDE GÖRSEL ÜZERİ KONUŞMA DÜZENİ)
+========================================= */
+.room-game-viewport {
+    position: relative;
+    width: 95vw;
+    max-width: 1550px;
+    height: 92vh;
+    max-height: 880px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    overflow: hidden;
+    background-color: transparent;
+    opacity: 0;
+    transform: scale(0.94) translateY(20px);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#department-screen.active .room-game-viewport {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* Çarpı (Close) Butonu - Sağ Üst Köşede Floating */
+.btn-close-modal {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    z-index: 500;
+    width: 44px;
+    height: 44px;
+    background-color: var(--color-dark);
+    border: 2.5px solid var(--color-orange);
+    color: var(--color-cream);
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+.btn-close-modal:hover {
+    transform: scale(1.15);
+    background-color: var(--color-orange);
+    color: var(--color-white);
+}
+
+/* Oyun Sahnesi (Görsel Sahnesi) */
+.room-game-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.room-stage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.room-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+}
+.room-img-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, #3A2414 0%, #1A0F08 100%);
+    color: var(--color-cream);
+}
+.fallback-icon { font-size: 4rem; }
+
+/* CANLI ODA AMBİYANS IŞIĞI (Ambient Room Lighting) */
+.room-ambient-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 25%, rgba(255, 180, 100, 0.14), transparent 68%);
+    animation: roomLightPulse 4.5s ease-in-out infinite alternate;
+    z-index: 10;
+}
+@keyframes roomLightPulse {
+    0% { opacity: 0.45; filter: brightness(1); }
+    50% { opacity: 0.85; filter: brightness(1.08); }
+    100% { opacity: 0.55; filter: brightness(1.02); }
+}
+
+/* KOMPAKT & ŞIK GÖRSEL ÜZERİ FLO KONUŞMA BALONCUĞU (%15-20 Küçültüldü) */
+.speech-bubble-overlay {
+    position: absolute;
+    bottom: 1.4rem;
+    right: 1.4rem;
+    z-index: 200;
+    width: 350px;
+    max-width: calc(100% - 2.8rem);
+    background-color: rgba(255, 246, 236, 0.95);
+    border: 2.5px solid var(--color-dark);
+    border-radius: 20px;
+    padding: 1.1rem 1.3rem;
+    box-shadow: 0 14px 32px rgba(0,0,0,0.5), 0 5px 0 #241C15;
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+}
+.speech-bubble-overlay::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: 40px;
+    border-width: 0 14px 14px 14px;
+    border-style: solid;
+    border-color: transparent transparent var(--color-dark) transparent;
+}
+.speech-bubble-overlay::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 42px;
+    border-width: 0 12px 12px 12px;
+    border-style: solid;
+    border-color: transparent transparent rgba(255, 246, 236, 0.95) transparent;
+}
+
+.bubble-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+    gap: 12px;
+}
+.character-badge {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    background-color: var(--color-orange);
+    color: var(--color-cream);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding: 0.28rem 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 0 #241C15;
+}
+.step-tag {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    line-height: 1.4;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: rgba(36, 28, 21, 0.6);
+    font-weight: 700;
+}
+
+.bubble-title {
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 0.35rem;
+}
+
+.bubble-text {
+    max-height: 9.3em;
+    overflow-y: auto;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: #2c221a;
+    min-height: 3.2em;
+    font-weight: 500;
+}
+
+.bubble-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.6rem;
+}
+
+.btn-bubble-prev {
+    background-color: var(--color-peach);
+    color: var(--color-dark);
+    border: 2px solid var(--color-dark);
+    padding: 0.45rem 1.1rem;
+    border-radius: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #241C15;
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+.btn-bubble-prev:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+}
+
+.btn-bubble-next {
+    background-color: var(--color-orange);
+    color: var(--color-cream);
+    border: 2px solid var(--color-dark);
+    padding: 0.5rem 1.3rem;
+    border-radius: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #241C15;
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+.btn-bubble-next:hover {
+    filter: brightness(1.15);
+    transform: translateY(-2px);
+}
+
+/* Game / Task View Placeholder */
+.room-game-view {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, #241C15 0%, #17110B 100%);
+}
+.game-placeholder-card {
+    background-color: var(--color-cream);
+    border: 3px solid var(--color-dark);
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    max-width: 550px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 6px 0 #241C15;
+}
+.game-icon { font-size: 3.8rem; margin-bottom: 0.8rem; }
+.game-placeholder-card h2 {
+    font-family: var(--font-mono);
+    color: var(--color-orange);
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+}
+.game-placeholder-card p {
+    font-size: 0.95rem;
+    color: var(--color-dark);
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+}
+.game-status-badge {
+    display: inline-block;
+    background-color: var(--color-peach);
+    color: var(--color-orange);
+    border: 1.5px solid var(--color-orange);
+    padding: 0.4rem 1rem;
+    border-radius: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.dialogue-box h2 {
+    font-family: var(--font-mono);
+    color: var(--color-orange);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+.dialogue-box p {
+    line-height: 1.5;
+    color: var(--color-dark);
+    font-size: 0.9rem;
+}
+
+.room-task {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--color-white);
+}
+.room-task h3 {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+    color: var(--color-dark);
+}
+#question-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.4rem;
+    font-weight: 600;
+}
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+.option-btn {
+    background-color: var(--color-cream);
+    border: 2px solid var(--color-dark);
+    padding: 0.9rem 1rem;
+    border-radius: 10px;
+    text-align: left;
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    box-shadow: 0 3px 0 #241C15;
+}
+.option-btn:hover:not(:disabled) {
+    background-color: var(--color-peach);
+    transform: translateY(-2px);
+}
+.option-btn.correct {
+    background-color: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+.option-btn.wrong {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+}
+.option-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.75;
+}
+
+#feedback-message {
+    margin-top: 1rem;
+    padding: 0.85rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+#feedback-message.correct {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #28a745;
+}
+#feedback-message.wrong {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #dc3545;
+}
+
+.hidden { display: none !important; }
+.text-center { text-align: center; }
+
+.lock-big-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+.badge-icon { font-size: 4rem; margin: 1rem 0; }
+
+/* Mobil */
+@media (max-width: 800px) {
+    .sidebar { display: none; }
+    .room-container { grid-template-columns: 1fr; }
+    .room-visuals { border-right: none; border-bottom: 3px solid var(--color-dark); }
+}
+
+.sound-toggle { position: fixed; top: 16px; right: 16px; z-index: 10000; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.5); border-radius: 50%; background: #fff5e9; box-shadow: 0 3px 14px #0003; cursor: pointer; font-size: 22px; }
+.sound-toggle:hover { background: #ffe1be; }
+.sound-toggle:focus-visible { outline: 3px solid #ff5a1f; outline-offset: 3px; }

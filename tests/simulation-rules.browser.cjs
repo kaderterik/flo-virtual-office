@@ -1,0 +1,60 @@
+const assert=require('node:assert/strict');
+const {openBrowser,begin,solvePrimary,decisions}=require('./browser-support.cjs');
+(async()=>{
+    const env=await openBrowser(),{page,errors}=env;
+    const click=async(action,id,value)=>page.locator(`[data-action="sim-${action}"]${id===undefined?'':`[data-id="${id}"]`}${value===undefined?'':`[data-value="${value}"]`}`).click();
+    const feedback=()=>page.locator('.mg-feedback').innerText();
+    try{
+        await begin(page,1);await click('hire',0);assert.match(await feedback(),/iki görüşmeyi/);assert.equal(await page.locator('.mg-case').count(),0);
+        await click('interview',2,0);await click('interview',2,1);await click('hire',2);assert.match(await page.locator('.mg-result').innerText(),/Bir tur daha/);
+        assert.equal(await page.locator('#badge-count').innerText(),'0');
+        await begin(page,4);
+        await page.evaluate(()=>{[0,2,8,5,5].forEach((count,i)=>{for(let n=0;n<count;n++)document.querySelector(`[data-action="sim-allocate"][data-id="${i}"][data-value="1"]`).click();});});
+        const full=await page.locator('.sim-stepper output').allTextContents();
+        await page.locator('[data-action="sim-allocate"][data-id="0"][data-value="1"]').evaluate(el=>{el.disabled=false;el.click();});
+        assert.deepEqual(await page.locator('.sim-stepper output').allTextContents(),full);assert.match(await feedback(),/raf kapasitesi/);
+        await click('allocation-submit');assert.match(await page.locator('.mg-result').innerText(),/Bir tur daha/);
+        await begin(page,6);await click('audit-submit');assert.match(await feedback(),/fark nedeni/);
+        for(let i=0;i<4;i++)await page.locator(`[data-sim-reason="${i}"]`).selectOption('0');
+        await page.locator('[data-sim-input="0"]').fill('');await click('audit-submit');assert.match(await feedback(),/tam sayı/);
+        await page.locator('[data-sim-input="0"]').fill('27');await click('audit-submit');assert.match(await page.locator('.mg-result').innerText(),/Bir tur daha/);
+        // Stock and packing capacity are shared between orders, not reset per card.
+        await begin(page,8);await click('order',0);await click('ship',0);
+        assert.match(await page.locator('.sim-card').first().innerText(),/Stok: 1 çift/);
+        await click('order',3);await click('ship',0);assert.match(await feedback(),/yeterli stok/);
+        assert.match(await page.locator('.sim-card').first().innerText(),/Stok: 1 çift/);
+        await click('backorder');await click('order',1);await click('ship',0);await click('order',4);await click('ship',1);await click('order',2);await click('ship',2);
+        assert.equal(await page.locator('.mg-case').count(),1,'Four of five on-time orders meets 80% threshold');
+        await page.evaluate(()=>exitDepartment());assert.equal(await page.locator('#badge-count').innerText(),'0','Partial operation is not a finished badge');
+        await begin(page,9);await click('vitrine-submit');assert.match(await feedback(),/üç alanı/);
+        await page.locator('[data-action="sim-product"][data-id="4"]').evaluate(el=>{el.disabled=false;el.click();});assert.match(await feedback(),/Stoksuz/);
+        await click('slot',0);await click('product',0);await click('slot',1);await click('product',0);
+        assert.match(await page.locator('[data-action="sim-slot"][data-id="0"]').innerText(),/Alanı Seç/,'A product cannot occupy two slots');
+        await page.evaluate(()=>{[3,2,5].forEach((product,slot)=>{document.querySelector(`[data-action="sim-slot"][data-id="${slot}"]`).click();document.querySelector(`[data-action="sim-product"][data-id="${product}"]`).click();});});
+        await click('vitrine-submit');assert.match(await page.locator('.mg-result').innerText(),/Bir tur daha/);
+        await begin(page,12);
+        for(let i=0;i<5;i++)await click('station',i);
+        assert.match(await page.locator('[data-live-score]').innerText(),/0\/5/,'Clicking props alone earns no progress');
+        await click('kaizen-commit');assert.match(await feedback(),/Hem israf/);
+        await page.evaluate(()=>{departmentGames[12].stations.forEach((station,i)=>{document.querySelector(`[data-action="sim-station"][data-id="${i}"]`).click();document.querySelector(`[data-action="sim-diagnose"][data-id="${(station.category+1)%5}"]`).click();document.querySelector(`[data-action="sim-remedy"][data-id="${(station.answer+1)%3}"]`).click();document.querySelector('[data-action="sim-kaizen-commit"]').click();});});
+        await click('kaizen-submit');assert.match(await page.locator('.mg-result').innerText(),/Bir tur daha/);
+        await begin(page,13);await click('task-next',2);assert.match(await feedback(),/ön koşulu/);
+        await click('task-next',0);await click('task-next',1);await click('task-next',4);assert.match(await feedback(),/kapasitesi dolu/);
+        await click('task-next',0);assert.match(await feedback(),/Kodlama henüz/);
+        await click('sprint-tick');await click('task-next',1);await click('task-next',1);assert.match(await feedback(),/Test bitmeden/);
+        await begin(page,13);for(let day=0;day<10;day++)await click('sprint-tick');assert.match(await page.locator('.mg-result').innerText(),/Sprint süresi doldu/);
+        await begin(page,18);await click('project-start',5);assert.match(await feedback(),/Ön koşul/);
+        await click('project-start',0);await click('project-tick');await click('project-start',1);assert.match(await feedback(),/Ön koşul/);
+        await begin(page,18);for(let day=0;day<9;day++)await click('project-tick');assert.match(await page.locator('.mg-result').innerText(),/Açılış takvimi kaçırıldı/);
+        // Expanded content proves capacity guards; total and state come from the data.
+        await page.evaluate(()=>departmentGames[20].cargos.push({name:'Ek İstanbul sevkiyatı',origin:'Gebze',region:'istanbul',pallets:2}));
+        await begin(page,20);await click('cargo',0);await click('load',1);assert.match(await feedback(),/güzergâhına uygun/);
+        await click('load',0);await click('cargo',1);await click('load',0);await click('cargo',5);await click('load',0);assert.match(await feedback(),/kapasitesi aşılır/);
+        assert.match(await page.locator('.sim-card').first().innerText(),/5\/6 palet/);
+        await click('unload',0);assert.match(await page.locator('.sim-card').first().innerText(),/2\/6 palet/);
+        await page.evaluate(()=>departmentGames[20].cargos.pop());
+        await begin(page,20);await solvePrimary(page,20);await decisions(page);assert.equal(await page.locator('#badge-count').innerText(),'1');
+        assert.deepEqual(errors,[]);
+        console.log('PASS hiring evidence, allocation scarcity, audit validation, shared order capacity, unique/available storefront products, Kaizen diagnosis, sprint WIP/testing/dependencies, project deadline, dispatch routes/capacity/unload.');
+    }finally{await env.close();}
+})().catch(error=>{console.error(error);process.exitCode=1;});

@@ -1,0 +1,38 @@
+.mg-intro-stages { margin: 18px 0; padding-left: 22px; line-height: 1.65; font-size: 14px; }
+.mg-training-note { font-size: 12px; opacity: .75; line-height: 1.5; }
+.mg-case { max-width: 900px; margin: 0 auto; }
+.mg-stage-banner { display: flex; flex-wrap: wrap; gap: 10px 18px; padding: 12px 16px; background: #fff3e9; color: #472712; border: 2px solid #1a1a1a; border-radius: 8px; font-size: 12px; }
+.mg-stage-banner strong { color: #a3350b; }
+.mg-case-progress { margin: 22px 0 10px; color: #ffb18e; font-size: 14px; }
+.mg-case-title { font-size: clamp(24px, 3vw, 34px); line-height: 1.2; margin-bottom: 14px; }
+.mg-case-brief { font-size: 17px; line-height: 1.65; max-width: 760px; }
+.mg-case-evidence { margin: 22px 0; padding: 20px 24px; background: #fff; color: #1a1a1a; border: 2px solid #1a1a1a; border-left: 7px solid #ff5a1f; border-radius: 8px; box-shadow: 4px 4px 0 #ff5a1f; }
+.mg-case-evidence h4 { font-size: 15px; margin-bottom: 12px; }
+.mg-case-evidence ul { padding-left: 20px; }
+.mg-case-evidence li { margin: 8px 0; font-size: 15px; line-height: 1.55; }
+.mg-case-rule { font-size: 13px; line-height: 1.6; color: #ddd; margin-bottom: 16px; }
+.mg-case-options { display: grid; gap: 12px; }
+.mg-shell .mg-case-option { display: block; width: 100%; padding: 17px 20px; text-align: left; line-height: 1.55; font-size: 15px; white-space: normal; overflow-wrap: anywhere; }
+.mg-shell .mg-case-option:disabled { opacity: .55; cursor: default; }
+.mg-shell .mg-case-option.mg-case-picked { opacity: 1; border-color: #ff5a1f; background: #fff3e9; box-shadow: 3px 3px 0 #ff5a1f; }
+.mg-case-consequence { margin: 22px 0; padding: 20px; color: #1a1a1a; border: 2px solid #1a1a1a; border-radius: 8px; }
+.mg-case-good { background: #dff5e6; border-left: 7px solid #197342; }
+.mg-case-learn { background: #fff0dc; border-left: 7px solid #c86616; }
+.mg-case-consequence p { font-size: 15px; line-height: 1.65; margin-top: 10px; }
+.mg-report { text-align: left; margin: 26px 0; }
+.mg-report > h4 { font-size: 22px; margin-bottom: 10px; }
+.mg-report > ol { list-style: none; padding: 0; display: grid; gap: 14px; margin: 20px 0; }
+.mg-report > ol > li { padding: 20px; background: #fff; color: #1a1a1a; border: 2px solid #1a1a1a; border-radius: 8px; box-shadow: 3px 3px 0 #ff5a1f; }
+.mg-report p { line-height: 1.65; font-size: 14px; margin-top: 8px; }
+.mg-report summary { cursor: pointer; padding: 12px 0; font-weight: 700; }
+.mg-case-title:focus-visible, .mg-report summary:focus-visible { outline: 3px solid #ff5a1f; outline-offset: 4px; }
+@media (max-width: 700px) {
+    .mg-heading { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .mg-heading > div:first-child { width: 100%; }
+    .mg-session-controls { width: 100%; justify-content: flex-start; }
+    .mg-case-evidence { padding: 15px; }
+    .mg-case-brief { font-size: 16px; }
+    .mg-shell .mg-case-option { padding: 14px; font-size: 14px; min-height: 48px; }
+    .mg-stage-banner { gap: 8px; font-size: 11px; }
+    .mg-report > ol > li { padding: 15px; }
+}
